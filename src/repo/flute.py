@@ -25,5 +25,23 @@ class flute(object):
 			Logger.error(str(e))	
 			return None
 		return res.x, res.y
+	
+	def caculateTreeWireLength(self, tree: Tree)->int:
+		try:
+			res = _flute.wirelength(tree)
+		except Exception as e:
+			Logger.error("RepocaculateTreeWireLength failed.")
+			Logger.error(str(e))	
+			return None
+		return res
+	
+	def runFluteWl(self, x_coordintaes:List[int], y_coordintates:List[int], degree:int, accuracy:int = 3)->Tree:
+		try:
+			res = _flute.flute_wl(degree, x_coordintaes, y_coordintates, accuracy)
+		except Exception as e:
+			Logger.error("ReporunFlute failed.\nx_coordintaes: {x_coordintaes}\ny_coordintates: {y_coordintates}")
+			Logger.error(str(e))	
+			return None
+		return res
 
 Flute=flute()

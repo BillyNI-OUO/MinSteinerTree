@@ -6,7 +6,7 @@ LIB_TARGET = ./src/repo/_flute.so
 
 all: $(LIB_TARGET)
 
-$(LIB_TARGET): ./src/repo/flute.cpp
+$(LIB_TARGET): ./src/repo/flute.cpp ./src/repo/flute.h
 	$(CXXPROC) -o $@  $(CPPFLAGS) ${LDFLAGS} $<
 
 .PHONY: test

@@ -11,14 +11,16 @@ class storeIO:
         if StoreParser.args.input == None:
             Logger.info("Parsing data from stdin.")
             res = self.parseFromStdin()
+            Logger.info("End parsing data from stdin.")
             if res == None:
                 Logger.error("Parsing fail from stdin.")
             return res
         else:
             Logger.info(f"Parsing data from {StoreParser.args.input}.")
             res = self.parseFromFile(StoreParser.args.input)
+            Logger.info(f"End parsing data from {StoreParser.args.input}.")
             if res == None:
-                Logger.error("Parsing fail from stdin.")
+                Logger.error(f"Parsing fail from {StoreParser.args.input}.")
             return res 
     
     def parseFromStdin(self) -> Tuple[List[int], List[int]]:

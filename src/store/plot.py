@@ -15,8 +15,10 @@ class storePlot:
         for i in range(int(len(edges[0])/2)):
             plt.plot(edges[0][2*i:2*i+2], edges[1][2*i:2*i+2], color='k')    
 
-        plt.xlim(float(min(xCoordinates)-2), float(max(xCoordinates)+2))
-        plt.ylim(float(min(yCoordinate)-2), float(max(yCoordinate)+2))
+        width = 0.05 * (max(xCoordinates) - min(xCoordinates))
+        height = 0.05 * (max(yCoordinate) - min(yCoordinate))
+        plt.xlim(float(min(xCoordinates)-width), float(max(xCoordinates)+width))
+        plt.ylim(float(min(yCoordinate)-height), float(max(yCoordinate)+width))
         plt.xlabel(r'$X$', size=16)
         plt.ylabel(r'$Y$', size=16)
         plt.grid(b=True, which='major', color = 'r', linestyle= '--', linewidth = '0.5')
@@ -25,6 +27,7 @@ class storePlot:
     def savePicture(self, fileName:str)->None:
         Logger.info(f"Output to {fileName}")
         plt.savefig(fileName)
+        Logger.info(f"Finish output to {fileName}")
 
     def show(self)->None:
         Logger.info("Showing the graph")
